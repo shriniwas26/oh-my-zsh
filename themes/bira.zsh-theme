@@ -1,3 +1,18 @@
+# ZSH Theme - Preview: https://gyazo.com/8becc8a7ed5ab54a0262a470555c3eed.png
+
+function venv_info {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo "%{$fg[green]%}‹${VIRTUAL_ENV:t}›%{$reset_color%}"
+    fi
+}
+function conda_info {
+    if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
+        echo "%{$fg[green]%}‹${CONDA_DEFAULT_ENV}›%{$reset_color%}"
+    fi
+}
+local venv='$(venv_info)'
+local conda='$(conda_info)'
+
 local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
 local user_host="%B%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%} "
 local user_symbol='%(!.#.$)'
