@@ -7,7 +7,7 @@ function venv_info {
 }
 function conda_info {
     if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
-        echo "%{$fg[green]%}‹${CONDA_DEFAULT_ENV}›%{$reset_color%}"
+        echo "%{$fg[green]%}‹Conda:${CONDA_DEFAULT_ENV}›%{$reset_color%}"
     fi
 }
 local venv='$(venv_info)'
@@ -30,7 +30,15 @@ fi
 
 ZSH_THEME_RVM_PROMPT_OPTIONS="i v g"
 
-PROMPT="╭─${conda_prompt}${user_host}${current_dir}${rvm_ruby}${vcs_branch}${venv_prompt}${kube_prompt}
+ARCH="%{$FG[240]%}‹Arch:$(arch)› %{$reset_color%}"
+
+export ZSH_THEME_HG_PROMPT_TAG=""
+export ZSH_THEME_HG_PROMPT_PREFIX="‹"
+export ZSH_THEME_HG_PROMPT_SUFFIX="›"
+export ZSH_PROMPT_BASE_COLOR="%{$fg_bold[magenta]%}"
+local hg_branch='$(hg_prompt_info)%{$reset_color%}'
+
+PROMPT="╭─${user_host}${current_dir}${ARCH}${rvm_ruby}${hg_branch}${git_branch}${conda}${venv}
 ╰─%B${user_symbol}%b "
 RPROMPT="%B${return_code}%b"
 
