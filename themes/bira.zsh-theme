@@ -38,7 +38,7 @@ export ZSH_THEME_HG_PROMPT_SUFFIX="›"
 export ZSH_PROMPT_BASE_COLOR="%{$fg_bold[magenta]%}"
 local hg_branch='$(hg_prompt_info)%{$reset_color%}'
 
-PROMPT="╭─${user_host}${current_dir}${ARCH}${rvm_ruby}${hg_branch}${git_branch}${conda}${venv}
+PROMPT="╭─${user_host}${current_dir}${ARCH}${rvm_ruby}${vcs_branch}${conda}${venv}
 ╰─%B${user_symbol}%b "
 RPROMPT="%B${return_code}%b"
 
